@@ -12,7 +12,7 @@ import { Input } from "@/components/ui/input"
 
 import { Button } from '@/components/ui/button'
 import { useForm } from "react-hook-form"
-import { SignUpValidation } from "@/lib/validation"
+import { SignupValidation } from "@/lib/validation"
 import type z from "zod"
 import Loader from "@/components/shared/Loader"
 import { Link } from "react-router-dom"
@@ -24,8 +24,8 @@ const SignupForm = () => {
   const isLoading = false // Replace with your loading state if needed
   
   // 1. Define your form.
-  const form = useForm<z.infer<typeof SignUpValidation>>({
-    resolver: zodResolver(SignUpValidation),
+  const form = useForm<z.infer<typeof SignupValidation>>({
+    resolver: zodResolver(SignupValidation),
     defaultValues: {
       name: "",
       email: "",
@@ -35,7 +35,7 @@ const SignupForm = () => {
   })
 
   // 2. Define a submit handler.
- async  function onSubmit(values: z.infer<typeof SignUpValidation>) {
+ async  function onSubmit(values: z.infer<typeof SignupValidation>) {
     const newUser = await createUserAccount(values);
 
     console.log(newUser);
@@ -84,7 +84,7 @@ const SignupForm = () => {
               <FormItem>
                 <FormLabel>Email</FormLabel>
                 <FormControl>
-                  <Input type="text" className="shad-input" {...field} />
+                  <Input type="email" className="shad-input" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -97,7 +97,7 @@ const SignupForm = () => {
               <FormItem>
                 <FormLabel>Password</FormLabel>
                 <FormControl>
-                  <Input type="text" className="shad-input" {...field} />
+                  <Input type="password" className="shad-input" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
